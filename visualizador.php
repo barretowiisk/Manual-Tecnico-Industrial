@@ -1,12 +1,12 @@
 <?php
 $arquivo = basename($_GET['arquivo']);
-$caminho = __DIR__ . "/manuais/$arquivo";
+$caminho = __DIR__ . "/arquivos/$arquivo";
 
 if (!file_exists($caminho) || pathinfo($caminho, PATHINFO_EXTENSION) !== 'pdf') {
     die("Arquivo inválido.");
 }
 
-$urlPDF = "manuais/" . rawurlencode($arquivo);
+$urlPDF = "arquivos/" . rawurlencode($arquivo);
 ?>
 
 <!DOCTYPE html>
