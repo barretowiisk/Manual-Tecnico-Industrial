@@ -1,0 +1,54 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 10px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  .creditos {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: -20px;
+    margin-bottom: 10px;
+  }
+
+  .creditos a {
+    color: #666;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  select {
+    width: 80%;
+    padding: 12px;
+    font-size: 16px;
+    margin: 20px 0;
+    border-radius: 8px;
+    border: 1px solid #bbb;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  iframe {
+    width: 100%;
+    height: 74vh;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }

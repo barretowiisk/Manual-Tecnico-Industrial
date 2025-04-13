@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Manual Técnico Industrial</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.png">
+  </head>
+  <body>
+    <div class="container">
+      <h1><i class="fa-solid fa-book"></i> Manual Técnico Industrial</h1>
+      <div class="creditos">&copy;2025 <a href="https://saobarreto.com.br/" target="_blank">São Barreto Consultoria & Gestão TI</a>.<br><a href="https://github.com/barretowiisk"><i class="fa-brands fa-github"></i> v1.10.0</a> - Todos os Direitos Reservados.</div>
+      <select id="seletor-manuais">
+        <option value="">Selecione o manual desejado...</option>
+      </select>
+      <iframe id="pdfViewer" src="" sandbox="allow-scripts allow-same-origin" allowfullscreen></iframe>
+    </div>
+
+    <script>
+      // Função para carregar o PDF no iframe
+      document.addEventListener('DOMContentLoaded', () => {
+        const seletor = document.getElementById('seletor-manuais');
+        const viewer = document.getElementById('pdfViewer');
+
+        fetch('listar_manuais.php')
+        .then(res => res.json())
+        .then(arquivos => {
+            arquivos.forEach(arquivo => {
+            const option = document.createElement('option');
+            option.value = arquivo;
+            option.textContent = arquivo;
+            seletor.appendChild(option);
+            });
+        })
+        .catch(() => {
+            const option = document.createElement('option');
+            option.textContent = 'Nenhum manual disponível!';
+            seletor.appendChild(option);
+        });
+
+        seletor.addEventListener('change', () => {
+            if (seletor.value) {
+                const caminhoSeguro = encodeURIComponent(seletor.value);
+                viewer.src = `viewer/viewer.html?file=../abrir_pdf.php?file=${caminhoSeguro}#zoom=page-width`;
+            } else {
+                viewer.src = '';
+            }
+        });
+      });
+
+      // Função para bloquear teclas específicas
+      document.addEventListener('keydown', function(e) {
+          // Ctrl + S ou Ctrl + P
+          if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'p')) {
+          e.preventDefault();
+          alert('Não é permitido baixar, imprimir ou salvar o manual!');
+          }
+
+          // F12 (DevTools), Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J
+          if (e.key === 'F12' || 
+              (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key.toUpperCase()))) {
+          e.preventDefault();
+          alert('Modo desenvolvedor não autorizado!');
+          }
+
+          // Print Screen
+          if (e.key === 'PrintScreen') {
+          navigator.clipboard.writeText('');
+          alert('Não é autorizado tirar print da tela!');
+          }
+      });
+
+      // Bloqueia botão direito do mouse
+      document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          alert('Ação bloqueada!');
+      });
+
+      // Bloqueia Print Screen limpando a área de transferência repetidamente (não é garantido)
+      setInterval(() => {
+          navigator.clipboard.writeText('');
+      }, 1000);
+    </script>
+  </body>
+</html>
