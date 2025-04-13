@@ -44,7 +44,7 @@
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/manual-tecnico-industrial.git
+   git clone https://github.com/barretowiisk/Manual-Tecnico-Industrial.git
    ```
 
 2. Coloque seus arquivos PDF na pasta `arquivos/`.
