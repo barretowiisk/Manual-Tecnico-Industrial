@@ -4,7 +4,7 @@
 
 ## 🚀 Funcionalidades
 
-- ✅ Listagem dinâmica de manuais a partir de um diretório específico (pasta `MANUAIS`)
+- ✅ Listagem dinâmica de manuais a partir de um diretório específico (pasta `arquivos/`)
 - ✅ Interface responsiva e moderna com layout limpo
 - ✅ Visualização de arquivos PDF diretamente no navegador utilizando **PDF.js**
 - ✅ Zoom ajustado automaticamente à **largura da página** no carregamento
