@@ -3,7 +3,7 @@ $arquivo = $_GET['file'] ?? '';
 
 $arquivo = basename($arquivo); // previne acesso a caminhos externos
 
-$caminho = __DIR__ . "/arquivos/$arquivo";
+$caminho = __DIR__ . "/var/www/data/$arquivo";
 
 if (file_exists($caminho)) {
     header("Content-Type: application/pdf");

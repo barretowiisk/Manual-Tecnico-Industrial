@@ -1,5 +1,6 @@
 <?php
-$diretorio = 'arquivos/';
+// $diretorio = 'arquivos/';
+$diretorio = '/var/www/data/';
 $arquivos = array_diff(scandir($diretorio), ['.', '..']);
 
 $pdfs = array_filter($arquivos, function($arq) use ($diretorio) {

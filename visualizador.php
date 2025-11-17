@@ -1,6 +1,7 @@
 <?php
 $arquivo = basename($_GET['arquivo']);
-$caminho = __DIR__ . "/arquivos/$arquivo";
+// $caminho = __DIR__ . "/arquivos/$arquivo";
+$caminho = "/var/www/data/$arquivo";
 
 if (!file_exists($caminho) || pathinfo($caminho, PATHINFO_EXTENSION) !== 'pdf') {
     die("Arquivo inválido.");
